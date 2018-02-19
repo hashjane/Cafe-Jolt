@@ -1,11 +1,24 @@
-<ul class="menuitem">
+<table class="table table-hover">
   <% @menu_items["menu_items"].each do |menu_item| %>
-    <li>
-      <h2><%= menu_item["name"] %></h2>
-      <p><%= menu_item["description"]%></p>
-      <p>In stock: <%= menu_item["stock_level"]%></p>
-      <div><%= button_to 'Order', remote: true %></div>
-    </li>
+  <tr>
+    <td>
+      <h3><%= menu_item["name"] %></h3>
+      <small><%= menu_item["description"] %></small>
+      <p><small>In stock: <%= menu_item["stock_level"] %></small></p>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <%= button_to 'Order', class: 'btn btn-success' do %>
+            <i class="glyphicon glyphicon-minus"></i>
+          <% end %>
+        </div>
+        <div class="btn-group">
+          <%= button_to 'Order', class: 'btn btn-success' do %>
+            <i class="glyphicon glyphicon-plus"></i>
+          <% end %>
+        </div>
+    </div>
+    </td>
+  </tr>
   <% end %>
-</ul>
+</table>
 
