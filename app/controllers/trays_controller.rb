@@ -10,11 +10,7 @@ class TraysController < ApplicationController
   # GET /trays/1
   # GET /trays/1.json
   def show
-    #@menu_item = MenuItem.get_menu_item_by_id('/menu_items/21f55aa5-9785-4f74-b625-2217139d3fc4')
-    logger.debug "THIS ++++> #{@tray.line_items}"
-    @tray.line_items.each do |item|
-      @menu_item = MenuItem.get_menu_item_by_id(item[:menu_item_id]);
-    end
+   @menu_items = MenuItem.get_menu_items_by_tray(@tray.line_items)
   end
 
   # GET /trays/new

@@ -26,12 +26,8 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    menu_item = MenuItem.get_menu_item_by_id('/menu_items/21f55aa5-9785-4f74-b625-2217139d3fc4')
-    #pp menu_item.inspect
-    #@line_item = @tray.line_items.build(menu_item_id: '21f55aa5-9785-4f74-b625-2217139d3fc4')
+    menu_item = MenuItem.get_menu_item_by_id(params[:item_id])
     @line_item = @tray.line_items.build(menu_item_id: menu_item['_links']['self']['href'])
-    logger.debug "hash this  #{menu_item['_links']['self']['href'].inspect}"
-    logger.debug "LINEITEMs  #{@line_item.inspect}"
 
     respond_to do |format|
       if @line_item.save

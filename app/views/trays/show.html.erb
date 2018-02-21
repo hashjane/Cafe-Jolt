@@ -3,10 +3,9 @@
 <% end %>
 
 <h2>Your Tray:</h2>
-  <%= debug @menu_item %>
 <ul>
-  <% @tray.line_items.each do |item|%>
-    <li><%= debug item[:menu_item_id] %></li>
+  <% @menu_items.each do |item|%>
+    <li><%= item['name'] %></li>
   <% end %>
 </ul>
 <%= link_to 'Edit', edit_tray_path(@tray) %> |

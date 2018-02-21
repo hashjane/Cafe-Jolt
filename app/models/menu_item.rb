@@ -27,6 +27,12 @@ class MenuItem < ApplicationRecord
     @menu_item_by_id = JSON.parse(menu_item_by_id.body, symbolize: true)
   end
 
+  def self.get_menu_items_by_tray(items_in_tray)
+    items_in_tray.map do |item|
+      get_menu_item_by_id(item[:menu_item_id])
+    end
+  end
+
   private
 
     def ensure_not_referenced_by_any_line_item

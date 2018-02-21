@@ -12,7 +12,7 @@
           <% end %>
         </div>
         <div class="btn-group">
-          <%= button_to line_items_path(item_id: menu_item["id"]), class: 'btn btn-success' do %>
+          <%= button_to line_items_path(item_id: menu_item['_links']['self']['href']), class: 'btn btn-success' do %>
             <i class="glyphicon glyphicon-plus"></i>
           <% end %>
         </div>
