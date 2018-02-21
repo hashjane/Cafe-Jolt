@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219010401) do
+ActiveRecord::Schema.define(version: 20180220224424) do
+
+  create_table "line_items", force: :cascade do |t|
+    t.text "menu_item_id"
+    t.integer "tray_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_item_id"], name: "index_line_items_on_menu_item_id"
+    t.index ["tray_id"], name: "index_line_items_on_tray_id"
+  end
 
   create_table "menu_items", force: :cascade do |t|
     t.text "menu_item_id"
@@ -18,6 +27,11 @@ ActiveRecord::Schema.define(version: 20180219010401) do
     t.string "name"
     t.text "description"
     t.integer "stock_level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trays", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

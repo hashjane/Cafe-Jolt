@@ -4,8 +4,7 @@ class MenuItemsController < ApplicationController
   # GET /menu_items
   # GET /menu_items.json
   def index
-    #@menu_items = MenuItem.all
-    @menu_items = MenuItem.connect_to_api
+    @menu_items = MenuItem.get_menu_items
   end
 
   # GET /menu_items/1

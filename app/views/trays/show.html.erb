@@ -1,0 +1,13 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your Tray:</h2>
+  <%= debug @menu_item %>
+<ul>
+  <% @tray.line_items.each do |item|%>
+    <li><%= debug item[:menu_item_id] %></li>
+  <% end %>
+</ul>
+<%= link_to 'Edit', edit_tray_path(@tray) %> |
+<%= link_to 'Back', trays_path %>
