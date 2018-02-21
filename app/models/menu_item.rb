@@ -29,7 +29,7 @@ class MenuItem < ApplicationRecord
 
   def self.get_menu_items_by_tray(items_in_tray)
     items_in_tray.map do |item|
-      get_menu_item_by_id(item[:menu_item_id])
+      get_menu_item_by_id(item[:menu_item_id]).merge!({quantity: "#{item[:quantity]}"})
     end
   end
 

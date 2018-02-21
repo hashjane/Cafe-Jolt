@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180220224424) do
+ActiveRecord::Schema.define(version: 20180221021926) do
 
   create_table "line_items", force: :cascade do |t|
     t.text "menu_item_id"
     t.integer "tray_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["menu_item_id"], name: "index_line_items_on_menu_item_id"
     t.index ["tray_id"], name: "index_line_items_on_tray_id"
   end
