@@ -27,7 +27,6 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     menu_item = MenuItem.get_menu_item_by_id(params[:item_id])
-    logger.debug "******>>> #{@tray.line_items}"
     @line_item = @tray.add_menu_item(menu_item)
 
     #@line_item = @tray.line_items.build(menu_item_id: menu_item['_links']['self']['href'])

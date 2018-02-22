@@ -1,0 +1,10 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h5>Your Tray:</h5>
+<table class="table-condensed">
+
+  <%= render partial: 'line_items/line_item', object: @tray_items %>
+
+</table>

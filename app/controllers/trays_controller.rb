@@ -1,4 +1,5 @@
 class TraysController < ApplicationController
+  include CurrentTray
   before_action :set_tray, only: [:show, :edit, :update, :destroy]
 
   # GET /trays
@@ -10,7 +11,6 @@ class TraysController < ApplicationController
   # GET /trays/1
   # GET /trays/1.json
   def show
-   @menu_items = MenuItem.get_menu_items_by_tray(@tray.line_items)
   end
 
   # GET /trays/new
@@ -63,10 +63,6 @@ class TraysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tray
-      @tray = Tray.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tray_params

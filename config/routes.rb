@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'menu_items#index', as: 'menu_items_index'
   resources :line_items
   resources :trays
   resources :menu_items

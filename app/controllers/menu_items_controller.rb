@@ -1,4 +1,6 @@
 class MenuItemsController < ApplicationController
+  include CurrentTray
+  before_action :set_tray
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
 
   # GET /menu_items

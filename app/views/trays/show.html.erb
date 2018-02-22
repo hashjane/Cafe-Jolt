@@ -1,15 +1,1 @@
-<% if notice %>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
-<h2>Your Tray:</h2>
-<table class="table-condensed">
-  <% @menu_items.each do |item|%>
-  <tr>
-    <td><%= item[:quantity] %></td>
-    <td><%= item['name'] %></td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to 'Edit', edit_tray_path(@tray) %> |
-<%= link_to 'Back', trays_path %>
+ <%= render partial: 'trays/tray' %>
