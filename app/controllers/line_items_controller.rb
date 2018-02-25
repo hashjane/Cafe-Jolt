@@ -33,7 +33,8 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.tray, notice: 'Line item was successfully created.' }
+        format.html { redirect_to menu_items_index_url }
+#        format.js
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -46,8 +47,9 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1.json
   def update
     respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+      if @line_item.update(quantity: @line_item.quantity-1  )
+        self.destroy if @line_item.quantity == 0
+        format.html { redirect_to menu_items_index_url, notice: 'Your tray has been updated.' }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -60,10 +62,6 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private

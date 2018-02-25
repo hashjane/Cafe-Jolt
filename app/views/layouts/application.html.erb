@@ -13,7 +13,11 @@
       <div class="row">
         <div class="col-xs-3">
           <h1>Cafe Jolt</h1>
-          <%= render @tray %>
+          <% if @tray %>
+            <div id="tray">
+              <%= render @tray %>
+            </div>
+          <% end %>
         </div>
         <div class="col-xs-9">
           <%= yield %>

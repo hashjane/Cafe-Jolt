@@ -6,13 +6,15 @@
       <small><%= menu_item["description"] %></small>
       <p><small>In stock: <%= menu_item["stock_level"] %></small></p>
       <div class="btn-toolbar">
+        <% if @tray.line_items.any? { |i| i["menu_item_id"] == menu_item['_links']['self']['href']}%>
+          <div class="btn-group">
+            <%= button_to line_item_path(id: 10), method: "patch",  class: 'btn btn-success' do %>
+              <i class="glyphicon glyphicon-minus"></i>
+            <% end %>
+          </div>
+        <% end %>
         <div class="btn-group">
-          <%= button_to 'Order', class: 'btn btn-success' do %>
-            <i class="glyphicon glyphicon-minus"></i>
-          <% end %>
-        </div>
-        <div class="btn-group">
-          <%= button_to line_items_path(item_id: menu_item['_links']['self']['href']), class: 'btn btn-success' do %>
+          <%= button_to line_items_path(item_id: menu_item['_links']['self']['href']), remote: true,  class: 'btn btn-success' do %>
             <i class="glyphicon glyphicon-plus"></i>
           <% end %>
         </div>
