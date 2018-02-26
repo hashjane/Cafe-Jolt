@@ -33,7 +33,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to menu_items_index_url }
+        format.html { redirect_to menu_items_index_url, notice: "Tray item was successfully added." }
 #        format.js
         format.json { render :show, status: :created, location: @line_item }
       else
