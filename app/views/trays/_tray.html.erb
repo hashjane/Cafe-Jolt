@@ -8,3 +8,8 @@
   <%= render partial: 'line_items/line_item', object: @tray_items %>
 
 </table>
+
+<div class="btn-toolbar">
+  <%= button_to "Order", line_items_path(item_id: "/menu/32435"), class: 'btn btn-success' %>
+</div>
+

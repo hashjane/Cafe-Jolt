@@ -4,7 +4,8 @@ class MenuItem < ApplicationRecord
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  API_BASE_URL = "https://kitchen-service.herokuapp.com"
+  #API_BASE_URL = "https://kitchen-service.herokuapp.com"
+  API_BASE_URL = "http://localhost:5000"
 
 
   def self.connect_to_api
@@ -15,9 +16,14 @@ class MenuItem < ApplicationRecord
     end
   end
 
-  def self.get_menu_items
+  def self.get_menu_items #(page)
+    #logger.debug "HASH #{page} "
     conn = self.connect_to_api
     menu_items  = conn.get 'menu_items'
+    #menu_items  = conn.get do |req|
+    #  req.url 'menu_items', :'page[number]' => "#{page}"
+    #  req.params['page[size]'] = 20 
+    #end
     @menu_items = JSON.parse(menu_items.body, symbolize: true)
   end
 

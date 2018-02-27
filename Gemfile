@@ -65,4 +65,8 @@ gem 'autoprefixer-rails'
 # Use jquery
 gem 'jquery-rails'
 
+# Use will_paginate
+gem 'will_paginate'
 
+# Use api-pagination
+gem 'api-pagination'
