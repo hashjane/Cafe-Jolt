@@ -16,14 +16,14 @@ class MenuItem < ApplicationRecord
     end
   end
 
-  def self.get_menu_items #(page)
+  def self.get_menu_items(page)
     #logger.debug "HASH #{page} "
     conn = self.connect_to_api
     menu_items  = conn.get 'menu_items'
-    #menu_items  = conn.get do |req|
-    #  req.url 'menu_items', :'page[number]' => "#{page}"
-    #  req.params['page[size]'] = 20 
-    #end
+    menu_items  = conn.get do |req|
+      req.url 'menu_items', :'page[number]' => "#{page}"
+      req.params['page[size]'] = 10 
+    end
     @menu_items = JSON.parse(menu_items.body, symbolize: true)
   end
 

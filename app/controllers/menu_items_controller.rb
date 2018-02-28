@@ -6,10 +6,9 @@ class MenuItemsController < ApplicationController
   # GET /menu_items
   # GET /menu_items.json
   def index
-    @menu_items = MenuItem.get_menu_items #(params[:page])
+    page_number = params.dig("page", "number")&.to_i || 1
+    @menu_items = MenuItem.get_menu_items page_number
     logger.debug @menu_items
-    #@items = @menu_items["menu_items"].paginate(page: 2, per_page: 2)
-    #logger.debug @items.inspect
   end
 
   # GET /menu_items/1

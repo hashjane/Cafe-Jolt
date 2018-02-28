@@ -1,4 +1,4 @@
-<%= link_to "Next" %>
+<% #generate_links(@menu_items['_links']) %>
 <table class="table table-hover">
   <% @menu_items["menu_items"].each do |menu_item| %>
   <tr>
@@ -24,3 +24,13 @@
   </tr>
   <% end %>
 </table>
+<%= 
+  if @menu_items['_links'].include?('prev')
+    link_to "Previous", @menu_items['_links']['prev']['href'], class: 'btn btn-warning btn-sm'
+  end
+%>
+<%=
+  if @menu_items['_links'].include?('next')
+    link_to "Next", @menu_items['_links']['next']['href'], class: 'btn btn-warning btn-sm'
+  end
+%>
