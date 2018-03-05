@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302021342) do
+ActiveRecord::Schema.define(version: 20180304221911) do
 
   create_table "line_items", force: :cascade do |t|
     t.text "menu_item_id"
@@ -32,12 +32,13 @@ ActiveRecord::Schema.define(version: 20180302021342) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :text, force: :cascade do |t|
     t.integer "tray_id"
     t.text "components"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "status", default: "pending"
+    t.index ["id"], name: "sqlite_autoindex_orders_1", unique: true
     t.index ["tray_id"], name: "index_orders_on_tray_id"
   end
 
